@@ -1,0 +1,198 @@
+.right{
+    background-color: #2c2d3a;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 650px;
+    margin-left: 5px;
+    /* margin-right: 100px; */
+}
+
+
+.left{
+    margin-right: 5px;
+    padding-left: 40px;
+}
+.center{
+    margin-left: -40px;
+}
+.chart-container {
+    background-color: #2c2d3a;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 700px;
+}
+
+.container{
+    margin-right: 100px;
+}
+
+.chart-container2{
+    height: 300px;
+}
+p{
+    font-size: 2rem;
+}
+.pieChart2{
+    
+    border: none;
+    margin-left: 100px;
+}
+
+/* Ensure that the table-container is a flex container */
+.table-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next row */
+    justify-content: space-between; /* Space out the tables */
+}
+
+/* Flex container for table rows */
+.table-row {
+    display: flex;
+    justify-content: space-between; /* Align tables side by side */
+    width: 100%; /* Ensure full width */
+    margin-bottom: 20px; /* Space between rows of tables */
+}
+
+/* Each table section (box containing table and filter) */
+.table-section {
+    flex: 1 1 48%; /* Each table takes approximately 48% of the width, adjusting for spacing */
+    margin: 10px; /* Space around each table */
+    background-color: #1b1b30; /* Dark background (as per previous screenshot) */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure the table takes full width of its section */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Styling the table headers */
+th {
+    padding: 10px;
+    background-color: none;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Styling the table cells */
+td {
+    padding: 10px;
+    background-color: none;
+    color: fff;
+    border-bottom: none;
+}
+
+/* Button styling for the filter and apply buttons */
+
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .table-section {
+        flex: 1 1 100%; /* On smaller screens, each table takes full width */
+    }
+}
+/* Styling for the See More button */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Add some space above the button */
+    display: inline-block; /* Ensure the button is displayed inline */
+}
+
+/* Ensure the See More button is visible */
+button#see-more-btn-1, 
+button#see-more-btn-2, 
+button#see-more-btn-3, 
+button#see-more-btn-4 {
+    display: inline-block; /* Override display:none if applied elsewhere */
+}
+/* Modal overlay styles */
+/* Modal overlay styles */
+/* Modal overlay styles */
+/* Modal overlay styles */
+
+.hidden{
+    display: none;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 5;
+    display: none; /* Hidden by default */
+}
+
+/* Modal styles */
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    max-width: 800px;
+    background-color: #1b1b30;
+
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    display: none; /* Hidden by default */
+}
+
+/* Show the modal and overlay */
+.modal:not(.hidden) {
+    display: block;
+}
+
+.overlay:not(.hidden) {
+    display: block;
+}
+
+/* Close button styles */
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Table styles inside the modal */
+.modal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.modal th, .modal td {
+    padding: 10px;
+    text-align: left;
+}
+
+.modal th {
+    background-color: #2c2d3a;
+    color: #fff;
+}
+
+.modal td {
+    background-color: #1b1b30;
+    color: #fff;
+    border-bottom: 1px solid #333;
+}

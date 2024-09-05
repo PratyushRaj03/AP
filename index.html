@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Scooter Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase Configuration -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "your-api-key",
+        authDomain: "your-project-id.firebaseapp.com",
+        databaseURL: "https://your-project-id.firebaseio.com",
+        projectId: "your-project-id",
+        storageBucket: "your-project-id.appspot.com",
+        messagingSenderId: "your-sender-id",
+        appId: "your-app-id"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="top-nav">
+                <!-- Logo on the left -->
+                <div class="logo">
+                    <img src="logo.png" alt="ElectroScoot Logo" />
+                    <h2>BikeSetu Yard</h2> <!-- Logo Name -->
+                </div>
+        
+                <!-- Navigation options in the center/right -->
+                <!-- <ul class="nav-options">
+                    <li>Dashboard</li>
+                    <li>Portfolio</li>
+                    <li>Coins</li>
+                    <li>Categories</li>
+                    <li>Privacy Coins</li>
+                </ul> -->
+        
+                <!-- Search bar and user profile on the right -->
+                <div class="nav-right">
+                    <a href="/Login/index.html"><img class="logoutimg" src="/Login/logout.png" alt=""></a>
+                    <div class="profile">
+                        <!-- <button class="logbt">Log Out</button> -->
+                        <img src="logo.png" alt="User Avatar" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        
+        <nav class="sidebar">
+            <!-- <ul>
+                <li>Dashboard</li>
+                <li>Scooters</li>
+                <li>Rentals</li>
+                <li>Maintenance</li>
+                <li>Customers</li>
+            </ul> -->
+        </nav>
+        <main>
+            <div class="card-container">
+                <a href="orders.html"><div class="card purple-gradient">
+                    <h3>Orders</h3>
+                    <!-- <p>0.01% (+$53.92)</p> -->
+                </div></a>
+                <a href="staff.html">
+                    <div class="card blue-gradient">
+                        <h3>Staff</h3>
+                        <!-- <p>0.01% (+$53.92)</p> -->
+                    </div>
+                </a>
+                <div class="card light-blue-gradient">
+                    <h3>Inventory</h3>
+                    <!-- <p>0.01% (+$53.92)</p> -->
+                </div>
+                <!-- <div class="card green-gradient">
+                    <h3>Units</h3>
+                    <p>0.01% (+$53.92)</p>
+                </div> -->
+            </div>
+            
+            <div class="chart-container">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <div class="balance-section">
+                <h1>%1,327.21</h1>
+                <p>+23.7% UP FROM LAST MONTH</p>
+            </div>
+            <div class="send-receive-form">
+                <h3>You Send</h3>
+                <select>
+                    <option value="ETH">Ethereum (ETH)</option>
+                    <option value="BTC">Bitcoin (BTC)</option>
+                </select>
+                <input type="number" placeholder="Amount" />
+                
+                <h3>You Get</h3>
+                <select>
+                    <option value="1inch">1inch Network (1INCH)</option>
+                </select>
+                <input type="number" placeholder="Amount" />
+            </div>
+                        
+            <table>
+                <thead>
+                    <tr>
+                        <th>Scooter ID</th>
+                        <th>Model</th>
+                        <th>Status</th>
+                        <th>Last Rental</th>
+                    </tr>
+                </thead>
+                <tbody id="scooterTableBody">
+                    <!-- Table rows will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

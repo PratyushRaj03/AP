@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electric Scooter Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="orders.css">
+    <!-- Firebase Configuration -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+    <script>
+    const firebaseConfig = {
+        apiKey: "your-api-key",
+        authDomain: "your-project-id.firebaseapp.com",
+        databaseURL: "https://your-project-id.firebaseio.com",
+        projectId: "your-project-id",
+        storageBucket: "your-project-id.appspot.com",
+        messagingSenderId: "your-sender-id",
+        appId: "your-app-id"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav class="top-nav">
+                <div class="logo">
+                    <img src="logo.png" alt="ElectroScoot Logo" />
+                    <a href="index.html"><h2>BikeSetu Yard</h2></a>
+                </div>
+                <!-- <ul class="nav-options">
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li>Portfolio</li>
+                    <li>Coins</li>
+                    <li>Categories</li>
+                    <li>Privacy Coins</li>
+                </ul> -->
+                <div class="nav-right">
+                    <a href="/Login/index.html"><img class="logoutimg" src="/Login/logout.png" alt=""></a>
+                    <div class="profile">
+                        <img src="logo.png" alt="User Avatar" />
+                    </div>
+                </div>
+            </nav>
+        </header>
+        
+        <nav class="sidebar"></nav>
+        <main>
+            <div class="card-container">
+                <a href="orders.html">
+                    <div class="card purple-gradient">
+                        <h3>Completed Orders</h3>
+                        <p>8</p>
+                    </div>
+                </a>
+                <div class="card blue-gradient">
+                    <h3>Pending Orders</h3>
+                    <p>6</p>
+                </div>
+                <div class="card light-blue-gradient">
+                    <h3>Canceled Orders</h3>
+                    <p>3</p>
+                </div>
+                <div class="card green-gradient">
+                    <h3>Returned Orders</h3>
+                    <p>1</p>
+                </div>
+            </div>
+            
+            <div class="center">
+                <div class="left">
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                <div class="right">
+                    <!-- <h1>abbabadhbab</h1> -->
+                    <div class="chart-container2">
+                        <canvas id="pieChart2"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <div class="table-row">
+                    <!-- Table 1 and Table 2 side by side -->
+                    <div class="table-section">
+                        <h3>Completed Orders</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Franchise</th>
+                                    <th>Units</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-table-body-1">
+                                <!-- Rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <button id="see-more-btn-1" class="show-modal" data-modal="modal-1">See More</button>
+                    </div>
+                    
+                    <div class="table-section">
+                        <h3>Pending Orders</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Franchise</th>
+                                    <th>Units</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-table-body-2">
+                                <!-- Rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <button id="see-more-btn-2" class="show-modal" data-modal="modal-2">See More</button>
+                    </div>
+                </div>
+                
+                <div class="table-row">
+                    <!-- Table 3 and Table 4 side by side -->
+                    <div class="table-section">
+                        <h3>Cancelled Orders</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Franchise</th>
+                                    <th>Units</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-table-body-3">
+                                <!-- Rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <button id="see-more-btn-3" class="show-modal" data-modal="modal-3">See More</button>
+                    </div>
+                    
+                    <div class="table-section">
+                        <h3>Returned Orders</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Franchise</th>
+                                    <th>Units</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="employee-table-body-4">
+                                <!-- Rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                        <button id="see-more-btn-4" class="show-modal" data-modal="modal-4">See More</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal HTML -->
+            <div class="modal hidden" id="modal-1">
+                <button class="close-modal">&times;</button>
+                <h1>Completed Orders</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Franchise</th>
+                            <th>Units</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-table-body-1">
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal hidden" id="modal-2">
+                <button class="close-modal">&times;</button>
+                <h1>Pending Orders</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Franchise</th>
+                            <th>Units</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-table-body-2">
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal hidden" id="modal-3">
+                <button class="close-modal">&times;</button>
+                <h1>Cancelled Orders</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Franchise</th>
+                            <th>Units</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-table-body-3">
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal hidden" id="modal-4">
+                <button class="close-modal">&times;</button>
+                <h1>Returned Orders</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Franchise</th>
+                            <th>Units</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-table-body-4">
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="overlay hidden" id="modal-overlay"></div>
+        </main>
+    </div>
+    <script src="main.js"></script>
+    <script src="orders.js"></script>
+    <script src="modal.js"></script>
+</body>
+</html>
